@@ -1,0 +1,28 @@
+Benchmark notes (log10-first pipeline)
+=====================================
+Source CSVs were NOT modified.
+Train: unique planets with observed pl_bmasse, excluding validate planets.
+Test: 389 planets in planet_true_validate.csv (originally missing mass).
+All positive continuous features + target log10-transformed before modeling.
+Domain M-R codes (Forecaster, Wolfgang, MRExo) receive physical radius/mass
+because those published APIs apply their own internal log transforms.
+
+Files:
+- lalande2024estimating_knnxkde.xlsx      (GitHub knnxkde.py)
+- lalande2024estimating_missforest.xlsx  (ExtraTrees IterativeImputer)
+- lalande2024estimating_knnimputer.xlsx
+- lalande2024estimating_mice.xlsx
+- lalande2024estimating_gain.xlsx        (PyTorch port of their GAIN/)
+- chen2017probabilistic.xlsx             (Forecaster Rstat2M)
+- wolfgang2016probabilistic.xlsx         (postsamp_eqn2_baseline)
+- kanodia2023beyond.xlsx                 (MRExo 2D M|R fit on our train set)
+- ma2021predicting.xlsx                  (3-comp GMM M-R-F conditional mean;
+                                          Zenodo MCMC archive is ~626MB and was
+                                          not fully retrieved; flux proxy F=(Teq/278.33)^4)
+- ulmer2019beyond.xlsx                   (BEM-inspired RF for mass; published BEM
+                                          predicts radius, not mass)
+- _benchmark_summary.xlsx
+
+Each Excel has sheets: predictions (pl_name, predicted_mass, actual_mass), metrics.
+
+- fbmi.xlsx  (GZanos/Fuzzy_Multiple_Imputation FBMI/FBLiR; log10 then inverse)

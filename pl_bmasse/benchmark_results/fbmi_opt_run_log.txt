@@ -1,0 +1,78 @@
+======================================================================
+Exoplanet mass imputation benchmarks (log10-first pipeline)
+======================================================================
+=== Data overview ===
+  n_rows_raw: 1286
+  n_unique_in_pipeline: 1108
+  n_train_obs: 719
+  n_test_miss: 389
+  n_eval: 389
+
+log10-transformed columns (16): ['pl_bmasse', 'pl_rade', 'pl_eqt', 'pl_orbper', 'pl_orbsmax', 'st_teff', 'st_mass', 'st_rad', 'st_age', 'sy_vmag', 'sy_jmag', 'sy_hmag', 'sy_kmag', 'sy_tmag', 'sy_vmagerr1', 'sy_tmagerr1']
+
+[fbmi] Fuzzy Bayesian Multiple Imputation (optimized search)
+
+  === FBMI variant: mr_core (P=8) ===
+  mr_core: MAE_log10=0.5021 RMSE=792.7 | holdout=0.31225270745071
+  Wrote fbmi_mr_core.xlsx | n=389 RMSE=792.700 MAE_log10=0.502
+
+  === FBMI variant: top8 (P=8) ===
+  top8: MAE_log10=0.5003 RMSE=796.4 | holdout=0.314369040685405
+  Wrote fbmi_top8.xlsx | n=389 RMSE=796.358 MAE_log10=0.500
+
+  === FBMI variant: top10 (P=10) ===
+  top10: MAE_log10=0.4942 RMSE=799.8 | holdout=0.313721545392656
+  Wrote fbmi_top10.xlsx | n=389 RMSE=799.815 MAE_log10=0.494
+
+  === FBMI variant: physics (P=10) ===
+  physics: MAE_log10=0.5066 RMSE=786.3 | holdout=0.31615683546605
+  Wrote fbmi_physics.xlsx | n=389 RMSE=786.290 MAE_log10=0.507
+
+  === FBMI variant: physics_mag (P=15) ===
+  physics_mag: MAE_log10=0.5525 RMSE=779.5 | holdout=0.320055537631436
+  Wrote fbmi_physics_mag.xlsx | n=389 RMSE=779.465 MAE_log10=0.553
+
+  === FBMI variant: top12 (P=12) ===
+  top12: MAE_log10=0.5007 RMSE=800.8 | holdout=0.316351966304782
+  Wrote fbmi_top12.xlsx | n=389 RMSE=800.826 MAE_log10=0.501
+
+  === FBMI variant: no_coords (P=16) ===
+  no_coords: MAE_log10=0.4877 RMSE=786.3 | holdout=0.318409057857541
+  Wrote fbmi_no_coords.xlsx | n=389 RMSE=786.281 MAE_log10=0.488
+
+  === FBMI variant: user_all (P=32) ===
+  user_all: MAE_log10=0.4817 RMSE=790.3 | holdout=0.247168954505583
+  Wrote fbmi_user_all.xlsx | n=389 RMSE=790.277 MAE_log10=0.482
+  Wrote fbmi_ensemble_top3.xlsx | n=389 RMSE=791.334 MAE_log10=0.481
+  ensemble_top3: MAE_log10=0.4808
+
+  >>> Selected FBMI variant: ensemble_top3 (MAE_log10=0.4808)
+  Wrote fbmi.xlsx | n=389 RMSE=791.334 MAE_log10=0.481
+
+=== Building summary workbook ===
+                          method   n        RMSE        MAE      MedAE  RMSE_log10  MAE_log10
+                            fbmi 389  791.333794 203.497684  11.709643    0.688974   0.480789
+              fbmi_ensemble_top3 389  791.333794 203.497684  11.709643    0.688974   0.480789
+                   fbmi_user_all 389  790.276707 204.966218  10.826905    0.686570   0.481718
+                ma2021predicting 389  799.415814 208.101784   8.330465    0.703894   0.483561
+lalande2024estimating_missforest 389  774.086602 202.738646  14.214723    0.635298   0.487506
+                  fbmi_no_coords 389  786.281358 204.954754  13.273469    0.683087   0.487749
+                      fbmi_top10 389  799.815256 204.786364  10.134728    0.717664   0.494183
+                       fbmi_top8 389  796.357608 205.547156  11.927978    0.708090   0.500340
+                      fbmi_top12 389  800.826388 205.482934   9.844619    0.718720   0.500679
+                    fbmi_mr_core 389  792.700220 205.734705  11.975089    0.710619   0.502117
+                    fbmi_physics 389  786.289986 208.516920  13.072654    0.704935   0.506603
+      lalande2024estimating_mice 389  778.358657 211.039609  17.221744    0.685400   0.508323
+               kanodia2023beyond 389  782.274159 208.602060  17.900912    0.683296   0.547308
+                fbmi_physics_mag 389  779.465357 220.505392  18.714739    0.735571   0.552508
+       wolfgang2016probabilistic 389  827.148781 219.852143   8.059889    0.817490   0.572065
+           chen2017probabilistic 389 4054.650964 569.290214   9.208730    0.850778   0.596330
+      lalande2024estimating_gain 389  774.822521 233.830249  49.711272    0.826430   0.687658
+                 ulmer2019beyond 389  776.620685 228.784837  65.251426    0.861534   0.734255
+lalande2024estimating_knnimputer 389  790.562310 275.194034 104.389099    0.987060   0.851191
+   lalande2024estimating_knnxkde 389  882.077859 431.184946 219.697053    1.161222   0.960269
+
+Summary: /Users/georgecharizanos/Desktop/Current Papers/Exoplanets/benchmark_results/_benchmark_summary.xlsx
+
+All Excel outputs in: /Users/georgecharizanos/Desktop/Current Papers/Exoplanets/benchmark_results
+Source CSVs were not modified.

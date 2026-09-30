@@ -1,0 +1,71 @@
+======================================================================
+Exoplanet Teq (pl_eqt) imputation benchmarks (log10-first pipeline)
+======================================================================
+=== Data overview ===
+  n_rows_raw: 416
+  n_unique_in_pipeline: 393
+  n_train_obs: 275
+  n_test_miss: 118
+  n_eval: 118
+
+log10-transformed columns (17): ['pl_eqt', 'pl_rade', 'pl_orbper', 'pl_orbsmax', 'st_teff', 'st_mass', 'st_rad', 'st_age', 'sy_vmag', 'sy_jmag', 'sy_hmag', 'sy_kmag', 'sy_tmag', 'sy_vmagerr1', 'sy_tmagerr1', 'teq_phys', 'pl_insol']
+
+[fbmi] Fuzzy Bayesian Multiple Imputation (optimized search)
+
+  === FBMI variant: teq_core (P=8) ===
+  teq_core: MAE=53.90 RMSE=79.78 MAE_log10=0.0255 | holdout=0.0077054295506756
+  Wrote fbmi_teq_core.xlsx | n=118 RMSE=79.784 MAE_log10=0.025
+
+  === FBMI variant: physics (P=10) ===
+  physics: MAE=54.63 RMSE=80.84 MAE_log10=0.0260 | holdout=0.0075066586268186
+  Wrote fbmi_physics.xlsx | n=118 RMSE=80.839 MAE_log10=0.026
+
+  === FBMI variant: physics_mag (P=15) ===
+  physics_mag: MAE=53.92 RMSE=80.82 MAE_log10=0.0259 | holdout=0.006510811042449
+  Wrote fbmi_physics_mag.xlsx | n=118 RMSE=80.816 MAE_log10=0.026
+
+  === FBMI variant: top8 (P=8) ===
+  top8: MAE=49.47 RMSE=72.81 MAE_log10=0.0235 | holdout=0.0065926516842175
+  Wrote fbmi_top8.xlsx | n=118 RMSE=72.811 MAE_log10=0.024
+
+  === FBMI variant: top10 (P=10) ===
+  top10: MAE=53.60 RMSE=84.30 MAE_log10=0.0242 | holdout=0.0052351598184055
+  Wrote fbmi_top10.xlsx | n=118 RMSE=84.300 MAE_log10=0.024
+
+  === FBMI variant: top12 (P=12) ===
+  top12: MAE=52.97 RMSE=75.23 MAE_log10=0.0245 | holdout=0.0054092595648856
+  Wrote fbmi_top12.xlsx | n=118 RMSE=75.235 MAE_log10=0.025
+
+  === FBMI variant: no_coords (P=17) ===
+  no_coords: MAE=53.81 RMSE=80.73 MAE_log10=0.0258 | holdout=0.0063567766872857
+  Wrote fbmi_no_coords.xlsx | n=118 RMSE=80.734 MAE_log10=0.026
+
+  === FBMI variant: user_all (P=33) ===
+  user_all: MAE=60.41 RMSE=89.14 MAE_log10=0.0274 | holdout=0.0059314789407868
+  Wrote fbmi_user_all.xlsx | n=114 RMSE=89.141 MAE_log10=0.027
+  Wrote fbmi_ensemble_top3.xlsx | n=118 RMSE=74.475 MAE_log10=0.024
+  ensemble_top3: MAE=51.18 RMSE=74.48
+  Wrote fbmi_ensemble_median.xlsx | n=118 RMSE=78.090 MAE_log10=0.025
+  ensemble_median: MAE=52.75 RMSE=78.09
+
+  >>> Selected FBMI variant: top8 (MAE=49.47, RMSE=72.81)
+  Wrote fbmi.xlsx | n=118 RMSE=72.811 MAE_log10=0.024
+
+=== Building summary workbook ===
+                          method   n       RMSE        MAE      MedAE  RMSE_log10  MAE_log10
+                            fbmi 118  72.810800  49.469819  30.115537    0.036210   0.023536
+lalande2024estimating_missforest 118  84.210966  56.216744  34.069678    0.040570   0.025427
+      lalande2024estimating_mice 118  81.066164  56.238261  39.459971    0.038514   0.026150
+       wolfgang2016probabilistic 118  85.897352  61.009395  41.000046    0.042853   0.028215
+                ma2021predicting 118  96.469151  65.969337  41.479848    0.044248   0.029601
+           chen2017probabilistic 118 100.443668  76.474484  65.975747    0.047550   0.036542
+      lalande2024estimating_gain 118 105.262262  77.249575  49.561630    0.043406   0.033815
+                 ulmer2019beyond 118 134.319564  79.246326  46.708662    0.047652   0.033962
+lalande2024estimating_knnimputer 118 237.932352 162.820384 110.640648    0.095526   0.074026
+   lalande2024estimating_knnxkde 118 250.145300 170.613792 116.377913    0.100945   0.075974
+               kanodia2023beyond 118 350.680765 285.631152 251.528820    0.180671   0.138657
+
+Summary: /Users/georgecharizanos/Desktop/Current Papers/Exoplanets/pl_eqt/benchmark_results/_benchmark_summary.xlsx
+
+All Excel outputs in: /Users/georgecharizanos/Desktop/Current Papers/Exoplanets/pl_eqt/benchmark_results
+Source CSVs were not modified.

@@ -1,0 +1,2 @@
+"m","symmetry.threshold","k","uncertainty_weight","fuzzify_variance","holdout_MAE_log10","n_features","features"
+-0.2,2.5,4,0.25,0.01,0.00606325558205707,33,"pl_rade;pl_orbper;pl_orbsmax;st_teff;st_mass;st_rad;st_logg;st_age;sy_snum;sy_pnum;ra;dec;glat;glon;elat;elon;sy_vmag;sy_vmagerr1;sy_vmagerr2;sy_jmag;sy_hmag;sy_kmag;sy_tmag;sy_tmagerr1;sy_tmagerr2;pl_nnotes;st_nphot;st_nrvc;st_nspec;pl_nespec;pl_ntranspec;teq_phys;pl_insol"

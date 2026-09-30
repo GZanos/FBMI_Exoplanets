@@ -1,0 +1,19 @@
+
+model {
+  for (i in 1:N_obs) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta0 + inprod(beta[1:P], X[i,1:P])
+  }
+  beta0 ~ dnorm(0, tau_beta0)
+  tau_beta0 ~ dgamma(1, 1)
+  for (j in 1:P) {
+    beta[j] ~ dnorm(0, tau_beta[j])
+    tau_beta[j] ~ dgamma(alpha_beta, beta_beta)
+  }
+  alpha_beta ~ dgamma(1, 1)
+  beta_beta ~ dgamma(1, 1)
+  tau ~ dgamma(1, 1)
+  sigma <- 1 / sqrt(tau)
+  sigma2_resid <- 1/tau
+}
+
